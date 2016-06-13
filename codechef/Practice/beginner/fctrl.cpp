@@ -1,19 +1,34 @@
-#include <iostream>
+#include <cstdio>
 using namespace std;
 
-long long int fact(long long int );
 
-int main(int argc, char const *argv[])
-{
-	long long int n,a;
-	cin>>n;
-	for(int i=0;i<n;i++){
-		cin>>a;
-		cout<<fact(a)<<endl;
-	}
-	return 0;
+unsigned long long z (unsigned long long x){
+  unsigned long long result = 0;
+  unsigned long long i;
+  
+  while(x>0){
+    x /= 5;
+    result += x;
+  }
+
+  return result;  
+  
 }
 
-long long int fact(long long int n){
-	return (n==0 || n==1)?1:n*fact(n-1);
+int main(){
+  int i,j;
+  scanf("%d",&j);
+  unsigned long long x;
+
+  for (i=0;i<j;i++){
+    scanf("%llu",&x);    
+    printf("%llun",z(x));  
+  }  
+
+  return 0;
 }
+/*
+After that I looked at the growth pattern of zeroes in factorial numbers, 
+and discovered that the number grows every 5 multiplications, 
+and that at the fifth consecutive increment it jumps by 2 instead of 1
+*/
