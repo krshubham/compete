@@ -23,10 +23,12 @@ int main(int argc, char const *argv[])
 		sort(marks.begin(),marks.end());
 		int a,b;
 		cin>>a>>b;
-		int needed = marks[k-1] - (a+b) + 1;
-		cout<<needed<<endl;
+		if(marks)
+		else{
+			int needed = marks[k-1] - (a+b) + 1;
+			cout<<needed<<endl;
+		}
 	}
-
 	//to add impossible
 	return 0;
 }
