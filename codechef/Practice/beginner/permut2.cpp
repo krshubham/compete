@@ -2,9 +2,11 @@
 using namespace std;
 int main()
 {
+	ios::sync_with_stdio(false);
 	int n;
 	cin>>n;
 	while(n){
+		int count = 0;
 		int arr[n];
 		for (int i = 0; i < n; ++i)
 		{
@@ -12,12 +14,16 @@ int main()
 		}
 		for (int i = 0; i < n; ++i)
 		{
-			if((arr[i] != i +1) && (arr[arr[i]-1] != arr[i])){
+			
+			if((arr[i] != i + 1) && (arr[arr[i]-1] != i + 1)){
+				cout<<"not ambiguous"<<endl;
 				break;
 			}
-			
+			count++;
 		}
-		cout<<"not ambiguous"<<endl;		
+		if(count==n){
+			cout<<"ambiguous"<<endl;
+		}			
 		cin>>n;
 	}
 	return 0;
