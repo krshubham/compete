@@ -24,10 +24,5 @@ int main()
 			}
 		}
 		if(count == n){
-			cout<<"The LCM of the given numbers is: "<<i<<endl;
-			return 0;
-		}
-	}
-	cout<<"The LCM of the given numbers is: "<<1<<endl;
 	return 0;
 }
