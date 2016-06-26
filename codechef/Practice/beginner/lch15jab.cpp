@@ -1,19 +1,20 @@
 #include <iostream>
 #include <algorithm>
-#include <map>
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	map<char,int> m;
-	int n;
-	cin>>n;
-	while(n--){
+	int t;
+	cin>>t;
+	while(t--){
 		string a;
 		cin>>a;
 		for (int i = 0; i < a.length(); ++i)
 		{
-			 
+				 if(a.length()%2 != 0){
+				 	cout<<"no"<<endl;
+				 }
+				 else if()
 		}
 	}
 	return 0;
