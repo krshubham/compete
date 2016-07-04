@@ -1,8 +1,5 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-
-
 int main(int argc, char const *argv[])
 {
 	ios_base::sync_with_stdio(false);
@@ -13,7 +10,7 @@ int main(int argc, char const *argv[])
 		cin>>n;
 		int sum = 0;
 		bool fail = false,max = false;
-		vector<int> m(n);
+		int m[n];
 		for (int i = 0; i < n; ++i)
 		{
 			cin>>m[i];
