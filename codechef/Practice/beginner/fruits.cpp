@@ -1,29 +1,21 @@
 #include <iostream>
-#include <algorithm>
+#include <cmath>
 using namespace std;
+typedef long long ll;
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]){
 	ios_base::sync_with_stdio(false);
 	int t;
 	cin>>t;
 	while(t--){
-		int a,b,c,diff;
-		cin>>a>>b>>c;
-		if(a-b == k || b-a ==k){
-			diff = 0;
+		ll n,m,k,diff;
+		cin>>n>>m>>k;
+		diff = abs(n-m);
+		if(diff == k || diff<k){
+			cout<<0<<endl;
 		}
-		else if(a-b>k){
-			while(a!=b && k!= 0){
-				a++;
-				k--;
-			}
-		}
-		else if(b-a > k){
-			while(a!=b && k!=0){
-				b++;
-				k--;
-			}
+		else{
+			cout<<diff-k<<endl;
 		}
 	}
 	return 0;
