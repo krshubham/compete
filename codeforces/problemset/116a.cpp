@@ -7,17 +7,17 @@ typedef unsigned long long int ulli;
 
 
 int main(int argc, char const *argv[]){
-	std::ios::sync_with_stdio(false);
-	int t;
+	ios_base::sync_with_stdio(false);
+	lli t,a,b;
 	cin>>t;
+	lli sum = 0;
+	lli max = 0;
 	while(t--){
-		int n;
-		cin>>n;
-		for (int i = 0; i < n; ++i){
-			for (int j = 0; j < n; ++j){
-				
-			}
-		}
+		cin>>a>>b;
+		sum -= a;
+		sum += b;
+		sum >= max ? max = sum : max = max;
 	}
+	cout<<max<<endl;
 	return 0;
 }
