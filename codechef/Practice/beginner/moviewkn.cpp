@@ -1,27 +1,22 @@
 #include <iostream>
-#include <algorithm>
+#include <utility>
 using namespace std;
 
-typedef long long ll;
 typedef long long int lli;
+typedef long long ll;
 typedef unsigned long long int ulli;
-
+typedef pair<int,int> pii;
+typedef pair<lli,lli> plli;
+typedef pait
 
 int main(int argc, char const *argv[]){
-	int t;
+	ios_base::sync_with_stdio(0);
+	lli t;
 	cin>>t;
 	while(t--){
-		lli n,min=100000001;
+		lli n;
 		cin>>n;
-		for (int i = 0; i < n; ++i){
-			lli a;
-			cin>>a;
-			if(a < min){
-				min = a;
-			}	
-		}
-		cout<<min*(n-1)<<endl;
+		
 	}	
 	return 0;
 }
-

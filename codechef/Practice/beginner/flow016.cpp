@@ -1,23 +1,19 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 typedef long long ll;
-
-ll gcd_recursive(ll a, ll b){
-    if (b)
-        return gcd_recursive(b, a % b);
-    else
-        return a;
-}
+typedef long long int lli;
+typedef unsigned long long int ulli;
 
 int main(int argc, char const *argv[]){
 	ll a;
 	cin>>a;
 	while(a--){
-		ll b,c;
-		scanf("%lld %lld",&b,&c);
-		ll gcd = gcd_recursive(b,c);
-		ll lcm = (b*c)/gcd;
+		int b,c,lcm;
+		cin>>b>>c;
+		int gcd = __gcd(b,c);
+		lcm = (b*c)/__gcd(b,c);
 		cout<<gcd<<" "<<lcm<<endl;
 	}
 
