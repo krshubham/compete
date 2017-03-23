@@ -14,6 +14,7 @@ int main(int argc, char const *argv[]){
 	lli count = 0;
 	int j = 0;
 	for (int i=0; i<s.size()&&j<4; i++){
+		cout<<s[i]<<" "<<ed
 		if (sub[j] == s[i])
 			j++;
 		if(j == 4){
