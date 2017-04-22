@@ -1,24 +1,27 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 typedef long long ll;
 typedef long long int lli;
 typedef unsigned long long int ulli;
 
+
 int main(int argc, char const *argv[]){
-	ios_base::sync_with_stdio(0);
-	lli t,n;
+	lli t;
 	cin>>t;
 	while(t--){
-		cin>>n;
-		lli arr[n];
-		for (int i = 0; i < n; ++i){
-			cin>>arr[i];	
+		lli a;
+		cin>>a;
+		lli arr[a];
+		for (int i = 0; i < a; ++i){
+			cin>>arr[i];
 		}
-		rsort(arr,arr+n);
-		for (int i = 0; i < n; ++i){
-			cout<<arr[i]<<endl;
+		lli cs=0,cp;
+		for (int i = 0; i <=a; ++i){
+			for (int j = i; j < a; ++j){
+				cp = i*j;
+				cs = i+j;
+			}
 		}
 	}
 	return 0;
