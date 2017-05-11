@@ -1,23 +1,23 @@
 #include <iostream>
 using namespace std;
 
-typedef long long int lli;
 typedef long long ll;
+typedef long long int lli;
 typedef unsigned long long int ulli;
 
 
 int main(int argc, char const *argv[]){
-	std::ios::sync_with_stdio(false);
-	int t;
+	ios_base::sync_with_stdio(0);
+	lli t,n;
 	cin>>t;
+	string s;
 	while(t--){
-		int n;
-		cin>>n;
-		for (int i = 0; i < count; ++i){
-			for (int j = 0; j < count; ++j){
+		cin>>s;
+		for (int i = 0; i < s.size(); ++i){
+			for (int j = 0; j < s.size(); ++j){
 				
-			}		
-		}	
+			}
+		}
 	}
 	return 0;
 }

@@ -4,6 +4,7 @@
         "ostream": "cpp",
         "limits": "cpp",
         "string": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "hashtable": "cpp"
     }
 }
