@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <functional>
 using namespace std;
 
 typedef long long int lli;
@@ -11,14 +10,20 @@ int main(int argc, char const *argv[]){
 	ios_base::sync_with_stdio(false);
 	lli t;
 	cin>>t;
-	lli arr[t],sum=0,num=0;
+	lli arr[t],sum=0,ms=0,n=0;
 	for (int i = 0; i < t; ++i){
 		cin>>arr[i];
 		sum += arr[i];
 	}
-	sort(arr, arr+t, std::greater<int>());
-	for (int i = 0; i < t; ++i){
-		
+	sort(arr,arr+t);
+	for (int i = t-1; i >= 0; i--){
+		sum -= arr[i];
+		ms +=arr[i];
+		n++;
+		if(ms > sum){
+			cout<<n<<endl;
+			break;
+		}
 	}
 	return 0;
 }

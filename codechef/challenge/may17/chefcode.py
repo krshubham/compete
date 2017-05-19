@@ -7,17 +7,21 @@ def solve(l,n,k):
 		a = []
 		for j in range(n):
 			if(c & (1<<j)):
-				a.append(l[j]);
+				a.append(l[j]) 
 		f.append(a)
-	return(f)	
-
+	return(f)
 
 n,k = list(map(int,input().split()));
 l = list(map(int,input().split()));
 c = 0
 f = solve(l,n,k)
-print(f)
 for i in f:
+	x = len(i)
+	if((x > 2)):
+		if(l[x-1] > k):
+			continue
+	if(i[0] > k):
+		continue
 	if(reduce(mul,i,1) <= k):
 		c+=1
 print(c)

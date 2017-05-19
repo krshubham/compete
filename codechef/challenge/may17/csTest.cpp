@@ -10,7 +10,7 @@ typedef unsigned long long int ulli;
 int main(int argc, char const *argv[]){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	lli n,k,p,a,r,cs,f=0,lv;
+	lli n,k,p,a,r,cs,f=0,lv,p1,p2;
 	string s;
 	cin>>n>>k>>p;
 	std::vector<lli> v;
@@ -28,27 +28,16 @@ int main(int argc, char const *argv[]){
 		else if(s[i] == '?'){
 			r = 0;
 			for (int i = 0; i < k; ++i){
-				r += v[i];
-				if(r == k){
-					cout<<r<<endl;
-					f = 1;
+				r+=v[i];
+			}
+			cs = r;
+			for (int i = k; i < n; ++i){
+				if(r == k)
 					break;
-				}
+				cs += v[i] - v[i-k];
+				r = max(r,cs);
 			}
-			if(f == 0){
-				cs = r;	
-				for (int i = k; i < n; ++i){
-					cs += v[i] - v[i-k];
-					r = max(r,cs);
-					if(r == k){
-						cout<<r<<endl;
-						f = 1;
-						break;
-					}
-				}
-			}
-			if(f == 0) cout<<r<<endl;
-			f = 0;
+			cout<<r<<endl;
 		}
 	}
 	return 0;

@@ -1,28 +1,73 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <set>
+#include <string>
+#include <cstdlib>
+#include <cstring>
 using namespace std;
 
-typedef long long ll;
 typedef long long int lli;
+typedef long long ll;
 typedef unsigned long long int ulli;
 
-int main(int argc, char const *argv[]){
-	ios_base::sync_with_stdio(0);
+
+lli arr[200000][27];
+lli nxt = 1;
+set<string> block;
+lli bs = 0;
+
+lli check(string s) {
+	lli v = 0;
+	for (int i = 0; i < s.size(); ++i){
+		lli j = s[i] - 'a';// getting the int value of alpha
+		if (arr[v][j] == -1) {
+			block.insert(s.substr(0,i+1));
+			bs++;
+			return 1;
+		}
+		v = arr[v][j];
+	}
+	return 0;
+}
+
+int main() {
 	lli t;
 	cin>>t;
-	char a;string s;
-	vector<string> allow;
+	string c,s;
+	vector<string> r;
+
+	// set all the values to -1
+	memset(arr, -1, sizeof(arr));
+
+
 	while(t--){
-		cin>>a>>s;
-		if(a == '-'){
-			for (int i = 0; i < allow.size(); ++i){
-				if()
+		cin>>c>>s;
+		if (c == "+"){
+			lli v = 0;
+			for (int i = 0; i < s.size(); ++i){
+				int j = s[i] - 'a';
+				if (arr[v][j] == -1){
+					arr[v][j] = nxt++;
+				}
+				v = arr[v][j];
 			}
-		}
-		else if(a == '+'){
-			allow.push_back(s);
+		} 
+		else{
+			r.push_back(s);
 		}
 	}
+
+	for (int i = 0; i < r.size(); ++i){
+		if (!check(r[i])) {
+			cout<<-1<<endl;
+			return 0;
+		}
+	}
+	cout<<bs<< endl;
+	set<string>::iterator it;
+	for (it = block.begin(); it != block.end(); it++)
+		cout<<*it <<endl;
+
 	return 0;
 }
