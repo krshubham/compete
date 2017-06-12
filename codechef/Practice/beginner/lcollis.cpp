@@ -1,31 +1,72 @@
 #include <iostream>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <map>
+#include <cmath>
+#include <utility>
+#include <list>
 using namespace std;
 
-typedef long long ll;
+#define bye return 0
+#define pb push_back
+#define mp make_pair
+#define mod(n) (n) % 1000000007
+#define e_val 2.718281828
+
 typedef long long int lli;
+typedef long long ll;
 typedef unsigned long long int ulli;
+typedef pair<lli,lli> plli;
+typedef vector<lli> vlli;
+typedef map<string,lli> mslli;
+typedef map<lli,lli> mlli;
+typedef vector<pair<lli,lli> > vplli;
 
+inline bool isPrime(lli n){
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
 
-int main(int argc, char const *argv[]){
+    if (n%2 == 0 || n%3 == 0) return false;
+ 
+    for (int i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+           return false;
+ 
+    return true;
+}
+
+inline bool isEven(lli x){
+	if(x&1) return false;
+	else return true;
+}
+
+int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,m;
+	lli t,n,a,b,c,d,e,f,x,y;
+	string s;
 	cin>>t;
 	while(t--){
-		cin>>n>>m;
-		lli arr[n][m];
-		for (int i = 0; i < n; ++i){
-			for (int j = 0; j < m; ++j){
-				cin>>arr[i][j];
+		cin>>a>>b;
+		lli arr[a][b];
+		for (int i = 0; i < a; ++i){
+			cin>>s;
+			for (int j = 0; j < b; ++j){
+				if(s[j] == '1')
+					arr[i][j] = 1;
+				else arr[i][j] = 0;
 			}
 		}
-		for (int i = 0; i < m; ++i){
-			for (int j = 0; j < n; ++j){
-				// if(arr[j][i] == 1){
-
-				// }
-				cout<<arr[i][j]<<endl;
+		lli ans = 0;
+		for (int i = 0; i < b; ++i){
+			c = 0;
+			for (int j = 0; j < a; ++j){
+				if(arr[j][i] == 1) c++;
 			}
+			ans+=c*(c-1)/2;
 		}
+		cout<<ans<<endl;
 	}
-	return 0;
+	bye;
 }

@@ -13,7 +13,6 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 #define mod(n) (n) % 1000000007
-#define e_val 2.718281828
 
 typedef long long int lli;
 typedef long long ll;
@@ -21,7 +20,6 @@ typedef unsigned long long int ulli;
 typedef pair<lli,lli> plli;
 typedef vector<lli> vlli;
 typedef map<string,lli> mslli;
-typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
     if (n <= 1)  return false;
@@ -47,23 +45,32 @@ int main(){
 	cin>>t;
 	while(t--){
 		cin>>n;
-		lli arr[n];
+		vlli neg;
+		a=0,b=0,c=0,d=0;
 		for (int i = 0; i < n; ++i){
-			cin>>arr[i];
-		}
-		sort(arr,arr+n);
-		x = 1;
-		lli count  = 0;
-		vplli v;
-		for (int i = n-1; i > 0; i--){
-			if(arr[i] == arr[i-1]){
-				v.pb(mp(arr[i],arr[i-1]));
-				i--;
+			cin>>e;
+			if(e >= 0){
+				a+=e;
+				b++;
+			}
+			else{
+				neg.pb(e);
 			}
 		}
-		if(v.size() < 2) cout<<-1<<endl;
-		else
-			cout<<v[0].first*v[1].first<<endl;
+		sort(neg.rbegin(),neg.rend());
+		d = a*b;
+		for (int i = 0; i < neg.size(); ++i){
+			x = (a+neg[i])*(b+1);
+			if(d < x){
+				d = x;
+				a += neg[i];
+				b++;
+			}
+			else{
+				c += neg[i];
+			}
+		}
+		cout<<c+d<<endl;
 	}
 	bye;
 }

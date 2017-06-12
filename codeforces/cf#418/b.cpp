@@ -21,6 +21,7 @@ typedef unsigned long long int ulli;
 typedef pair<lli,lli> plli;
 typedef vector<lli> vlli;
 typedef map<string,lli> mslli;
+typedef map<lli,lli> mlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
@@ -44,26 +45,52 @@ inline bool isEven(lli x){
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>n;
-		lli arr[n];
-		for (int i = 0; i < n; ++i){
-			cin>>arr[i];
+	cin>>n;
+	lli arr[n],br[n],cr[n];
+	for (int i = 0; i < n; ++i){
+		cin>>arr[i];
+	}
+	x = 0;
+	vlli v;
+	for (int i = 0; i < n; ++i){
+		cin>>br[i];
+		if(br[i] == arr[i]){
+			cr[i] = arr[i];
 		}
-		sort(arr,arr+n);
-		x = 1;
-		lli count  = 0;
-		vplli v;
-		for (int i = n-1; i > 0; i--){
-			if(arr[i] == arr[i-1]){
-				v.pb(mp(arr[i],arr[i-1]));
-				i--;
+		else{
+			x++;
+			v.pb(i);
+		}
+	}
+	for (int i = 0; i < n; ++i){
+			cr[i] = arr[i];
+	}
+	if(x == 1){
+		for (int i = 1; i <= n; ++i){
+			if(find(arr,arr+n,i) != arr+n && find(br,br+n,i) != br+n){
+				continue;
+			}
+			else{
+				cr[v[0]] = i;
+				break;
 			}
 		}
-		if(v.size() < 2) cout<<-1<<endl;
-		else
-			cout<<v[0].first*v[1].first<<endl;
 	}
+	else if(x >= 2){
+		y = 1;
+		for (int i = 0; i < v.size(); ++i){
+			if(isEven(y)){
+				cr[v[i]] = arr[v[i]];
+			}
+			else{
+				cr[v[i]] = br[v[i]];
+			}
+			y++;
+		}
+	}
+	for (int i = 0; i < n; ++i){
+		cout<<cr[i]<<" ";
+	}
+	cout<<endl;
 	bye;
 }

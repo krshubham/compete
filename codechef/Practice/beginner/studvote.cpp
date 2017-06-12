@@ -1,22 +1,36 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-typedef long long ll;
-typedef long long int lli;
-typedef unsigned long long int ulli;
 
+int main() {
+	int T;
+	cin>>T;
+	while (T--) {
+		int n, K;
+		cin>>n>>K;
 
-int main(int argc, char const *argv[]){
-	lli t;
-	cin>>t;
-	while(t--){
-		lli n,k;
-		cin>>n>>k;
-		for (int i = 0; i < n; ++i){
-			lli a;
-			cin>>a;
-			if()
+		vector<int> votes(n);
+		vector<int> a;
+		for (int i = 0; i < n; i++) {
+			int x;
+			scanf("%d", &x);
+			assert(x >= 1 && x <= n);
+			x--;
+			a.push_back(x);
+			votes[x]++;
 		}
-	}	
+
+		int ans = 0;
+		for (int i = 0; i < n; i++) {
+			if (a[i] == i) continue;
+			if (votes[i] >= K) {
+				ans++;
+			}
+		}
+
+		cout<<ans<<endl;
+	}
+
 	return 0;
 }

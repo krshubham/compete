@@ -9,15 +9,20 @@ typedef unsigned long long int ulli;
 
 int main(int argc, char const *argv[]){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e;
+	lli t,a,b,c,d,e;
 	cin>>t;
 	while(t--){
-		cin>>n;
-		lli arr[n];
-		for (int i = 0; i < n; ++i){
-			cin>>arr[i];
+		cin>>a>>b;
+		for (int i = 0; i < b; ++i){
+			cin>>c>>d;
 		}
-		
+		a -= 2*b;
+		if(a%2 == 0){
+			cout<<"yes"<<endl;
+		}
+		else{
+			cout<<"no"<<endl;
+		}
 	}
 	end;
 }

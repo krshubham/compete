@@ -21,6 +21,7 @@ typedef unsigned long long int ulli;
 typedef pair<lli,lli> plli;
 typedef vector<lli> vlli;
 typedef map<string,lli> mslli;
+typedef map<lli,lli> mlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
@@ -49,21 +50,11 @@ int main(){
 		cin>>n;
 		lli arr[n];
 		for (int i = 0; i < n; ++i){
-			cin>>arr[i];
+			cin>>a;
+			if(a < 0) arr[i] = -1;
+			else arr[i] = 1;
 		}
-		sort(arr,arr+n);
-		x = 1;
-		lli count  = 0;
-		vplli v;
-		for (int i = n-1; i > 0; i--){
-			if(arr[i] == arr[i-1]){
-				v.pb(mp(arr[i],arr[i-1]));
-				i--;
-			}
-		}
-		if(v.size() < 2) cout<<-1<<endl;
-		else
-			cout<<v[0].first*v[1].first<<endl;
+		
 	}
 	bye;
 }

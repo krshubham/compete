@@ -46,24 +46,9 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>n;
-		lli arr[n];
-		for (int i = 0; i < n; ++i){
-			cin>>arr[i];
-		}
-		sort(arr,arr+n);
-		x = 1;
-		lli count  = 0;
-		vplli v;
-		for (int i = n-1; i > 0; i--){
-			if(arr[i] == arr[i-1]){
-				v.pb(mp(arr[i],arr[i-1]));
-				i--;
-			}
-		}
-		if(v.size() < 2) cout<<-1<<endl;
-		else
-			cout<<v[0].first*v[1].first<<endl;
+		cin>>a>>b;
+		//Awesome question!
+		cout<<2*a*b-a-b<<endl;
 	}
 	bye;
 }

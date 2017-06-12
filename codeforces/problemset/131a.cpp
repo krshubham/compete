@@ -11,7 +11,6 @@ lli ac(string s, lli ss){
 		
 	}
 }
-
 int main(int argc, char const *argv[]){
 	ios_base::sync_with_stdio(0);
 	lli a,b,ss;
@@ -21,8 +20,6 @@ int main(int argc, char const *argv[]){
 	ac(s,ss);
 	return 0;
 }
-
-
 if(i==0){
 	cout<<(char)toupper(s[i]);
 }
