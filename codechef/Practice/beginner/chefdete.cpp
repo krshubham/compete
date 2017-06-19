@@ -25,39 +25,38 @@ typedef map<lli,lli> mlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
-	if (n <= 1)  return false;
-	if (n <= 3)  return true;
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
 
-	if (n%2 == 0 || n%3 == 0) return false;
-	
-	for (int i=5; i*i<=n; i=i+6)
-		if (n%i == 0 || n%(i+2) == 0)
-			return false;
-		
-		return true;
-	}
+    if (n%2 == 0 || n%3 == 0) return false;
+ 
+    for (int i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+           return false;
+ 
+    return true;
+}
 
-	inline bool isEven(lli x){
-		if(x&1) return false;
-		else return true;
-	}
+inline bool isEven(lli x){
+	if(x&1) return false;
+	else return true;
+}
 
-	int main(){
-		ios_base::sync_with_stdio(0);
-		lli t,n,a,b,c,d,e,f,x,y;
-		mlli m;
-		cin>>t;
-		m[1] = 1;
+int main(){
+	ios_base::sync_with_stdio(0);
+	lli t,n,a,b,c,d,e,f,x,y;
+	cin>>n;
+	mlli m;
+	for (int i = 0; i < n; ++i){
 		cin>>a;
-		for (int i = 2; i <= t; ++i){
-			cin>>a;
-			m[a] = 1;
+		if(a == 0){
+			continue;
 		}
-		for (int i = 2; i <= t; ++i){
-			if(m[i] != 1){
-				cout<<i<<" ";
-			}
-		}
-		cout<<endl;
-		bye;
+		m[a]++;
 	}
+	for (int i = 1; i <= n; ++i){
+		if(m[i] == 0) cout<<i<<" ";
+	}
+	cout<<endl;
+	bye;
+}

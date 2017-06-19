@@ -7,8 +7,6 @@
 #include <cmath>
 #include <utility>
 #include <list>
-#include <cstring>
-#include <string>
 using namespace std;
 
 #define bye return 0
@@ -44,29 +42,25 @@ inline bool isEven(lli x){
 	else return true;
 }
 
+lli f1,f2;
+
+lli f(lli n){
+	if(n == 1)
+		return mod(f1);
+	else if(n == 2)
+		return mod(f2);
+	else{
+		return mod(mod(f(n-1)) + mod(f(n+1)));
+	}	
+}
+
 int main(){
-	lli N, K, E, M,t;
+	ios_base::sync_with_stdio(0);
+	lli t,n,a,b,c,d,e,x,y;
 	cin>>t;
 	while(t--){
-		cin>>N>>K>>E>>M;
-		lli sum[N-1];
-		memset(sum,0,sizeof sum);
-		for (int i=0; i<N-1; i++) {
-			for (int j=0; j<E; j++) {
-				int x; cin>>x;
-				sum[i] += x;
-			}
-		}
-		lli own = 0;
-		for (int i=0; i<E-1; i++) {
-			int x; cin>>x;
-			own += x;
-		}
-		sort(sum, sum+N-1);
-		own = sum[N-K-1] - own + 1;
-		if (own <= 0) cout << 0<<endl;
-		else if (own <= M) cout << own<<endl;
-		else cout << "Impossible"<<endl;
-		}
+		cin>>f1>>f2>>n;
+		cout<<f(n)<<endl;
+	}
 	bye;
 }

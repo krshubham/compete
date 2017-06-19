@@ -1,58 +1,44 @@
 #include <iostream>
+#include <string>
 using namespace std;
-
-typedef long long ll;
-typedef long long int lli;
-typedef unsigned long long int ulli;
-
-
-int main(int argc, char const *argv[]){
-	ios_base::sync_with_stdio(0);
-	lli t,a,b,c,d,e,f;
+int main()
+{
+	int t;
 	cin>>t;
-	string s;
-	while(t--){
-		cin>>s;
-		b=0,c=0;
-		a = s.size();
-		for (int i = 0; i < a; ++i){
-			if(s[i] == 's') b++;
-			else c++;
-		}
-		if(a >=2 ){
-			for (int i = a-1; i >= 0; i--){
-				if(i == a-1){
-					if(s[i-1] == 's' && s[i] == 'm'){
-						b--;
-					}
-				}
-				else{
-					if((s[i] == 'm' && s[i-1] == 's') || (s[i] == 'm' && s[i+1] == 's')){
-						b--;
-					}
-				}
+	while(t--)
+	{
+		string x;
+		cin>>x;
+		int len = x.size(),count1=0,count2=0,count3=0,i=0,count4=0;
+		while(1)
+		{
+			if (x[i] == 'm')
+			{
+				if (x[i-1] == 's')
+					x[i-1] = '0';
+				
+				else if (x[i-1] != 's' && x[i+1] == 's')
+					x[i+1] = '0';
+ 
 			}
+			i++;
+			if (i == len)
+				break;
 		}
-		else{
-			if(s[0] == 's'){
-				cout<<"snakes"<<endl;
-				continue;
-			}
-			else{
-				cout<<"mongooses"<<endl;
-				continue;
-			}
+		//cout<<"x= "<<x<<endl;
+		for (int i=0;i<len;i++)
+		{
+			if (x[i] == 's')
+				count1++;
+			else if (x[i] == 'm')
+				count2++;
 		}
-		if(b>c){
+		if (count1>count2)
 			cout<<"snakes"<<endl;
-		}
-		else if(b == c){
-			cout<<"tie"<<endl;
-		}
-		else{
+		else if (count1<count2)
 			cout<<"mongooses"<<endl;
-		}
-
+		else
+			cout<<"tie"<<endl;
+ 
 	}
-	return 0;
-}
+} 

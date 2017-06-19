@@ -7,8 +7,6 @@
 #include <cmath>
 #include <utility>
 #include <list>
-#include <cstring>
-#include <string>
 using namespace std;
 
 #define bye return 0
@@ -45,28 +43,29 @@ inline bool isEven(lli x){
 }
 
 int main(){
-	lli N, K, E, M,t;
+	ios_base::sync_with_stdio(0);
+	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
+	string s;
 	while(t--){
-		cin>>N>>K>>E>>M;
-		lli sum[N-1];
-		memset(sum,0,sizeof sum);
-		for (int i=0; i<N-1; i++) {
-			for (int j=0; j<E; j++) {
-				int x; cin>>x;
-				sum[i] += x;
-			}
-		}
-		lli own = 0;
-		for (int i=0; i<E-1; i++) {
-			int x; cin>>x;
-			own += x;
-		}
-		sort(sum, sum+N-1);
-		own = sum[N-K-1] - own + 1;
-		if (own <= 0) cout << 0<<endl;
-		else if (own <= M) cout << own<<endl;
-		else cout << "Impossible"<<endl;
-		}
+		 cin>>n;
+		 char a[n][7];
+		 for(int i=0 ;i<n ;i++){
+		    cin>>a[i];
+		 }
+		 int flag = 0;
+		 for(int i=0 ;i<n-1 ;i++){
+		    if( a[i][0] == 'c' ){
+		        if( a[i+1][0] != 'm'){
+		            flag = 1;
+		            break;
+		        }
+		    }
+		 }
+		 if( a[n-1][0] == 'c'){
+		     flag = 1;
+		 }
+		 flag == 0 ? cout<<"YES"<<endl : cout<<"NO"<<endl;
+	}
 	bye;
 }

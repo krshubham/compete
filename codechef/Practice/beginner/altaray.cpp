@@ -51,10 +51,29 @@ int main(){
 		lli arr[n];
 		for (int i = 0; i < n; ++i){
 			cin>>a;
-			if(a < 0) arr[i] = -1;
+			if(a<0){
+				arr[i] = -1;
+			}
 			else arr[i] = 1;
 		}
-		
+		if(arr[n-1]>0) f = 1;
+		else f = 0;
+		lli br[n];
+		c = 1;
+		for (int i = n-1; i > 0; i--){
+			if(arr[i-1]*arr[i] < 0){
+				br[i-1] = ++c;
+			}
+			else {
+				c = 1;
+				br[i-1] = c;
+			}
+		}
+		br[n-1] = 1;
+		for (int i = 0; i < n; ++i){
+			cout<<br[i]<<" ";
+		}
+		cout<<endl;
 	}
 	bye;
 }
