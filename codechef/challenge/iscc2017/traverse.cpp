@@ -32,17 +32,14 @@ inline bool isPrime(lli n){
 	if (n <= 3)  {
 		return true;
 	}
-
 	if (n%2 == 0 || n%3 == 0) {
 		return false;
 	}
-	
 	for (int i=5; i*i<=n; i=i+6){
 		if (n%i == 0 || n%(i+2) == 0){
 			return false;
 		}
 	}
-
 	return true;
 }
 
@@ -56,13 +53,7 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
-			}
-		}
-		cout<<endl;
+		cin>>n;
 	}
 	bye;
 }

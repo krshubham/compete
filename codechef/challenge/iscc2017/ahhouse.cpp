@@ -51,18 +51,46 @@ inline bool isEven(lli x){
 	else return true;
 }
 
+typedef struct vertex{
+	vector<vertex> neighbours;
+	lli pf;
+	lli pt;
+	bool visited; 
+} vertex;
+
+
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
+	lli t,n,a,b,c,d,e,f,x,y,m;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
+		cin>>n>>m;
+		vlli graph[n][m];
+		for (int i = 1; i <= n; ++i){
+			for (int j = 1; j <= m; ++j){
+				if(i+1 <= n*m){
+					graph[i][j].pb(i+1);
+				}
+				if(i-1>= 1){
+					graph[i][j].pb(i-1);
+				}
+				if(j+1 <= m){
+					graph[i][j].pb(j+1);
+				}
+				if(j-1 >= 1){
+					graph[i][j].pb(j-1);
+				}
 			}
 		}
-		cout<<endl;
+		for (int i = 1; i <= n; ++i){
+			for (int j = 1; j <= m; ++j){
+				cout<<"row "<<i<<" column "<<j<<endl;
+				vlli::iterator iter = graph[i][j].begin();
+				for (; iter != graph[i][j].end(); ++iter){
+					cout<<*iter<<" ";
+				}
+			}
+		}
 	}
 	bye;
 }

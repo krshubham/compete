@@ -56,13 +56,7 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
-			}
-		}
-		cout<<endl;
+		
 	}
 	bye;
 }

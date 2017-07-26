@@ -7,7 +7,6 @@
 #include <cmath>
 #include <utility>
 #include <list>
-#include <iomanip>
 using namespace std;
 
 #define bye return 0
@@ -55,15 +54,7 @@ int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
-			}
-		}
-		cout<<endl;
-	}
+	string
 	bye;
 }
 

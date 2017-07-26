@@ -7,7 +7,6 @@
 #include <cmath>
 #include <utility>
 #include <list>
-#include <iomanip>
 using namespace std;
 
 #define bye return 0
@@ -26,24 +25,16 @@ typedef map<lli,lli> mlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
-	if (n <= 1)  {
-		return false;
-	}
-	if (n <= 3)  {
-		return true;
-	}
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
 
-	if (n%2 == 0 || n%3 == 0) {
-		return false;
-	}
-	
-	for (int i=5; i*i<=n; i=i+6){
-		if (n%i == 0 || n%(i+2) == 0){
-			return false;
-		}
-	}
-
-	return true;
+    if (n%2 == 0 || n%3 == 0) return false;
+ 
+    for (int i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+           return false;
+ 
+    return true;
 }
 
 inline bool isEven(lli x){
@@ -53,17 +44,22 @@ inline bool isEven(lli x){
 
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
+	lli t,n,a,b,c=0,d,e,f,x,y;
+	cin>>n;
+	lli cnt = 0;
+	for (int i = 0; i < n; ++i){
+		cin>>a;
+		if(i>0){
+			if(a>=b) {
+				c++;
+				cnt = max(cnt,c);
+			}
+			else{
+				c = 0;
 			}
 		}
-		cout<<endl;
+		b = a;
 	}
+	cout<<cnt+1<<endl;
 	bye;
 }
-

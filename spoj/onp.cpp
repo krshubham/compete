@@ -54,15 +54,20 @@ inline bool isEven(lli x){
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
+	//infix to postfix conversion
+	map<char,lli> p;
+	p['^'] = 10;
+	p['/'] = 9;
+	p['*'] = 8;
+	p['+'] = 7;
+	p['-'] = 6;
 	cin>>t;
+	string s;
 	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
-			}
+		cin>>s;
+		for (int i = 0; i < s.size(); ++i){
+			
 		}
-		cout<<endl;
 	}
 	bye;
 }

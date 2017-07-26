@@ -53,16 +53,12 @@ inline bool isEven(lli x){
 
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
+	lli t;
+	long double n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		for (int i = a; i <= b; ++i){
-			if(isPrime(i)){
-				cout<<i<<endl;
-			}
-		}
-		cout<<endl;
+		cin>>a>>b>>c;
+		cout<<fixed<<setprecision(10)<<c/(a+b)<<endl;
 	}
 	bye;
 }
