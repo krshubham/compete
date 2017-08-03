@@ -52,20 +52,13 @@ inline bool isEven(lli x){
 }
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
+	lli t,n,a,b,d,e,f,x,y;
+	char c;
 	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
-	}
+	//[05:00 a.m.]: Server is started
+	lli days = 0;
+	scanf("[%lld:%lld %c.m]: ",&a,&b,&c);
+	cout<<a<<" "<<b<<" "<<c<<endl;
 	bye;
 }
 

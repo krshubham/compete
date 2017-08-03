@@ -54,16 +54,21 @@ inline bool isEven(lli x){
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
+	cin>>a>>b;
+	string s;
+	cin>>s;
+	map<char,bool> m;
+	for (int i = 65; i <= 90; ++i){
+		m[i] = false;
+	}
+	lli open = 0;
+	for (int i = 0; i < a; ++i){
+		if(m[s[i]] == true){
+
 		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
+		else{
+			m[s[i]] == true;
+			open++;
 		}
 	}
 	bye;

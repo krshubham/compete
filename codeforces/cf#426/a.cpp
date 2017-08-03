@@ -52,20 +52,57 @@ inline bool isEven(lli x){
 }
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
+	string s1,s2;
+	cin>>s1>>s2;
+	int n;
+	cin>>n;
+	//cout<<s1[0]<<s2[0];
+	n=n%4;
+	int a = (int)s1[0];
+	int b = (int)s2[0];
+	int f1=0,f2=0;
+	int x=a;
+	for(int i=1;i<=n;i++)
+	{
+		if(a==94)
+			a=62;
+		else if(a==62)
+			a=118;
+		else if(a==118)
+			a=60;
+		else if(a==60)
+			a=94;
 	}
-	bye;
-}
+	if(a==b)
+	{
+		f1=1;
+	}
+	for(int i=1;i<=n;i++)
+	{
+		if(x==94)
+			x=60;
+		else if(x==62)
+			x=94;
+		else if(x==118)
+			x=62;
+		else if(x==60)
+			x=118;
+	}
+	if(x==b)
+	{
+		f2=1;
+	}
+	if(f1==1 && f2==1)
+	{
+		cout<<"undefined"<<endl;
+		return 0;
+	}
+	if(f1)
+		cout<<"cw\n";
+	else if(f2)
+		cout<<"ccw\n";
+	else
+		cout<<"undefined\n";
+	return 0;
 
+}

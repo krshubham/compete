@@ -56,14 +56,20 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
+		cin>>n;
+		while(n--){
+			cin>>a>>b>>c;
+			if(isEven(b)){
+				cout<<b/2<<endl;
+			}
+			else{
+				if(a == c){
+					cout<<b/2<<endl;
+				}
+				else{
+					cout<<(b/2)+1<<endl;
+				}
+			}
 		}
 	}
 	bye;

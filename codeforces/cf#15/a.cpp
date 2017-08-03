@@ -51,21 +51,35 @@ inline bool isEven(lli x){
 	else return true;
 }
 
-int main(){
-	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
-	}
-	bye;
+bool cmp(plli &a, plli &b) {
+	return a.first<b.first;
 }
 
+int main() {
+	lli n = 0,t = 0;
+	lli c = 0,s = 0;
+	cin>>n>>t;
+	vplli houses;
+	for(int i = 0; i<n; ++i) {
+		cin>>c>>s;
+		houses.pb(mp(c, s));
+	}
+	sort(houses.begin(), houses.end(), cmp);
+	lli res = 0;
+
+	for(int i = 0; i<n-1; ++i) {
+		lli dist = houses[i+1].first-houses[i].first;
+		dist *= 2;
+		dist -= houses[i].second+ houses[i+1].second;
+		if(dist > 2*t) {
+			res += 2;
+		}
+		else if(dist == 2*t) {
+			res += 1;
+		}
+	}
+
+	res += 2;
+	cout<<res<<endl;
+	return 0;
+}

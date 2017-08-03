@@ -56,16 +56,20 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
+		cin>>x>>y;
+		
 	}
 	bye;
 }
 
+
+int main(){
+	cin >> n;    
+	while (n--){
+		ll x, y;
+		cin >> x >> y;
+		t ^= (xo(x + y - 1) ^ xo(x - 1));
+	}
+	if(t) cout << "tolik";
+	else  cout << "bolik"; 
+}

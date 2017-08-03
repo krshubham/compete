@@ -1,20 +1,20 @@
-#include <iostream>
-#include <cstdio>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <map>
-#include <cmath>
-#include <utility>
-#include <list>
-#include <iomanip>
+ #include <iostream>
+ #include <cstdio>
+ #include <vector>
+ #include <algorithm>
+ #include <set>
+ #include <map>
+ #include <cmath>
+ #include <utility>
+ #include <list>
+ #include <iomanip>
 using namespace std;
 
-#define bye return 0
-#define pb push_back
-#define mp make_pair
-#define mod(n) (n) % 1000000007
-#define e_val 2.718281828
+ #define bye return 0
+ #define pb push_back
+ #define mp make_pair
+ #define mod(n) (n) % 1000000007
+ #define e_val 2.718281828
 
 typedef long long int lli;
 typedef long long ll;
@@ -36,7 +36,7 @@ inline bool isPrime(lli n){
 	if (n%2 == 0 || n%3 == 0) {
 		return false;
 	}
-	
+
 	for (int i=5; i*i<=n; i=i+6){
 		if (n%i == 0 || n%(i+2) == 0){
 			return false;
@@ -54,18 +54,12 @@ inline bool isEven(lli x){
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
-	}
+	cin>>a>>b>>x>>y;
+	n = __gcd(x,y);
+	x = x/n;
+	y = y/n;
+	n = min(a/x,b/y);
+	cout<<x*n<<" "<<y*n<<endl;
 	bye;
 }
 

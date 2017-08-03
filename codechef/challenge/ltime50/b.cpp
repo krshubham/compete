@@ -56,15 +56,18 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>t;
 	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
+		cin>>n;
+		vlli v(n);
+		for (int i = 0; i < n; ++i){
 			cin>>v[i];
 		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
+		lli count = 0;
+		for (int i = 0; i < n; ++i){
+			for (int j = i+1; j < n; ++j){
+				cout<<v[i]<<" | "<<v[j]<<" = "<<(v[i] | v[j])<<endl;
+			}
 		}
+		cout<<count<<endl;
 	}
 	bye;
 }

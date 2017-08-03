@@ -53,19 +53,21 @@ inline bool isEven(lli x){
 
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
+	lli n,m,sqr,bit,sum;
+	n = 2;
+	m = 9;
+	sqr = n;
+	bit = n;
+	sum = 0;
+
+	while(bit > 0){
+		if(bit % 2 == 1){
+			sum += sqr;
 		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
+		sqr = (sqr * sqr) % m;
+		bit >>= 2;
 	}
+	cout<<sum<<endl;
 	bye;
 }
 

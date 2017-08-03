@@ -51,21 +51,34 @@ inline bool isEven(lli x){
 	else return true;
 }
 
-int main(){
-	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		vlli v(b);
-		for (int i = 0; i < b; ++i){
-			cin>>v[i];
-		}
-		sort(v.begin(), v.end());
-		for (int i = 1; i <= b; ++i){
-			
-		}
-	}
-	bye;
+
+typedef struct obj{
+	int a,b;
+} obj;
+
+bool comp(obj x,obj y){
+	return x.b>y.b;
 }
 
+int main(){
+	ios_base::sync_with_stdio(0);
+	int n,r;
+	cin>>n>>r;
+	obj x[r];
+	for(int i=0;i<r;++i){
+		cin>>x[i].a>>x[i].b;
+	}
+	sort(x,x+r,comp);
+	int i=0,cnt=0,res=0;
+	while((cnt!=n) && (i<r)){
+		cnt+=x[i].a;
+		res+=(x[i].a*x[i].b);
+		if(cnt>n){
+			res-=(cnt-n)*(x[i].b);
+			cnt=n;
+		}
+		++i;
+	}
+	cout<<res<<endl;
+	return 0;
+}
