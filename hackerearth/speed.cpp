@@ -7,6 +7,7 @@
 #include <cmath>
 #include <utility>
 #include <list>
+#include <iomanip>
 using namespace std;
 
 #define bye return 0
@@ -25,16 +26,24 @@ typedef map<lli,lli> mlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
-    if (n <= 1)  return false;
-    if (n <= 3)  return true;
+	if (n <= 1)  {
+		return false;
+	}
+	if (n <= 3)  {
+		return true;
+	}
 
-    if (n%2 == 0 || n%3 == 0) return false;
- 
-    for (int i=5; i*i<=n; i=i+6)
-        if (n%i == 0 || n%(i+2) == 0)
-           return false;
- 
-    return true;
+	if (n%2 == 0 || n%3 == 0) {
+		return false;
+	}
+	
+	for (int i=5; i*i<=n; i=i+6){
+		if (n%i == 0 || n%(i+2) == 0){
+			return false;
+		}
+	}
+
+	return true;
 }
 
 inline bool isEven(lli x){
@@ -42,17 +51,21 @@ inline bool isEven(lli x){
 	else return true;
 }
 
-
-// in this graph implementation, each node is a vector of long long ints which means that it stores the names of
-// all of its neighbours in a vector.
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	cout<<"Enter the number of vertices"<<endl;
-	cin>>n;
-	cout<<"Enter the weight and edge in the format edge1 edge2 weight"<<endl;
-	for (int i = 0; i < n; ++i){
-		
+	cin>>t;
+	while(t--){
+		cin>>n;
+		cin>>x;
+		c = 1;
+		for (int i = 1; i < n; ++i){
+			cin>>a;
+			if(a <= x) c++;
+			x = min(x,a);
+		}
+		cout<<c<<endl;
 	}
 	bye;
 }
+
