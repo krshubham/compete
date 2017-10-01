@@ -15,6 +15,7 @@ using namespace std;
 #define mp make_pair
 #define mod(n) (n) % 1000000007
 #define e_val 2.718281828
+#define endl "\n"
 
 typedef long long int lli;
 typedef long long ll;
@@ -56,7 +57,8 @@ int main(){
 	lli t,n,a,b,c,d,e,f,x,y;
 	string s1,s2;
 	cin>>s1>>s2;
-		
+	a = s1.size(),b = s2.size();
+	cout<<llcs(s1,s2,a,b)<<endl;
 	bye;
 }
 
