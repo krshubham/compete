@@ -65,7 +65,45 @@ inline bool isEven(lli x){
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	
+	cin>>n;
+	lli arr[n-1];
+	rep(i,n-1){
+		cin>>arr[i];		
+	}
+	cin>>t;
+	char ac;
+	x = 0;
+	while(t--){
+		cin>>ac;
+		if(ac == 'Q'){
+			cin>>a;
+			//solve
+			//longest contigous sequence of 1's from here.
+			d = a-1;
+			lli rcnt = 0,lcnt = 0;
+			if(isEven(x)){
+				while(arr[d++] == 1){
+					rcnt++;
+				}
+				while(arr[d--] == 1){
+					lcnt++;
+				}
+			}
+			else{
+				while(arr[d++] == 0){
+					rcnt++;
+				}
+				while(arr[d--] == 0){
+					lcnt++;
+				}
+			}
+			cout<<max(rcnt+1,lcnt+1)<<endl;
+		}
+		else{
+			//update;
+			x ^= 1;
+		}
+	}
 	bye;
 }
 

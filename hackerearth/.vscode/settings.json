@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"*.js": "javascript",
+		"bitset": "cpp",
+		"array": "cpp",
+		"hashtable": "cpp",
+		"valarray": "cpp",
+		"initializer_list": "cpp",
+		"string_view": "cpp",
+		"utility": "cpp",
+		"cstring": "cpp"
+	}
+}

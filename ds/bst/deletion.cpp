@@ -143,8 +143,9 @@ void inorder(node* n){
 		// while(root->count--){
 		// 	cout<<root->data<<" ";
 		// }
-		while(root->count--);
-		cout<<root->data<<endl;
+		while(root->count--){
+			cout<<root->data<<endl;			
+		}
 		inorder(root->right);
 	}
 }
@@ -161,10 +162,10 @@ int main(){
 	root = insert(root, 10);
 	root = insert(root, 12);
 	root = insert(root, 12);
-	// deleteNode(root, 20);
+	deleteNode(root, 10);
 	// cout<<root->data<<endl;
 	inorder(root);
-	inorder(root);
+	// inorder(root);
 	bye;
 }
 

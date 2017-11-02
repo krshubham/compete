@@ -62,18 +62,34 @@ inline bool isEven(lli x){
 	else return true;
 }
 
+lli lis_dp(lli arr[], lli n){
+	lli dp[n];
+	fill(dp,dp+n,1);
+	for (int i = 1; i < n; ++i){
+		for (int j = 0; j < i; ++j){
+			if(arr[j] < arr[i]){
+				dp[i] = max(dp[j], 1+dp[j]);
+			}
+		}
+	}
+	lli c = INT_MIN;
+	for (int i = 0; i < n; ++i){
+		c = max(c,dp[i]);
+	}
+	return c;
+}
+
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	cin>>n;
-		//0 2 3 4 1 2 3 4
-	for (int i = 0; i < n; ++i){
-		cin>>arr[i];
-	}
-	for (int i = n-1; i >= 0; --i){
-		rrep(j,n){
-			if(arr[j] < )
-		}
+	cin>>t;
+	while(t--){
+		cin>>n;
+		lli arr[n];
+		rep(i,n){
+			cin>>arr[i];
+		}	
+		cout<<lis_dp(arr,n)<<endl;
 	}
 	bye;
 }
