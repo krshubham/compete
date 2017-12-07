@@ -62,19 +62,16 @@ inline bool isEven(lli x){
 	else return true;
 }
 
-int maxXORInRange(int L, int R){
-    // get xor of limits
-	int LXR = L ^ R;
-
-    //  loop to get msb position of L^R
-	int msbPos = 0;
+inline ulli maxXORInRange(ulli L, ulli R){
+	ulli LXR = L ^ R;
+	ulli msbPos = 0;
 	while (LXR){
 		msbPos++;
 		LXR >>= 1;
 	}
 
-	int maxXOR = 0;
-	int two = 1;
+	ulli maxXOR = 0;
+	ulli two = 1;
 	while (msbPos--){
 		maxXOR += two;
 		two <<= 1;
@@ -88,7 +85,7 @@ int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
 	cin>>a>>b;
-	cout<<maxXORInRange(a, b)<<endl;	
+	cout<<maxXORInRange(a, b)<<endl;
 	bye;
-
 }
+

@@ -1,0 +1,7 @@
+a = int(input())
+s = set(list(map(int,input().split())))
+a = int(input())
+t = set(list(map(int,input().split())))
+a = int(input())
+y = set(list(map(int,input().split())))
+print(len(s.intersection(t).intersection(y)))

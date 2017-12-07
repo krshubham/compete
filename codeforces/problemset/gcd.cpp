@@ -66,7 +66,7 @@ lli gcd(lli a, lli b){
 	if(b == 0){
 		return a;
 	}
-	return gcd(a,b%a);
+	return gcd(b,a%b);
 }
 
 int main(){
