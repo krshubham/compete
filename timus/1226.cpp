@@ -73,16 +73,29 @@ void reverse(vector<string> v){
 	cout<<endl;
 }
 
+inline bool isChar(const char& c){
+	return (c>='a'&&c<='z')||(c>='A'&&c<='Z');
+}
+
 int main(){
-	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	string s,final;
-	final = "";
+	string s;
+	int len;
 	while(getline(cin,s)){
-		final += s;
+		len=s.length();
+		int start=0,end=0;
+		while(end<len){
+			while(end<len&&isChar(s[end]))end++;
+
+			for(int i=end-1;i>=start;i--)cout<<s[i];
+				start=end;
+			while(start<len&&!isChar(s[start])){
+				cout<<s[start];
+				start++;
+			}
+			end=start;
+		}
+		cout<<endl;
 	}
-	vector<string> v = tokenize(final);
-	reverse(v);
-	bye;
+	return 0;
 }
 

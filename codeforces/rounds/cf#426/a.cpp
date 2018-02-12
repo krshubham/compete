@@ -77,8 +77,7 @@ int main(){
 	{
 		f1=1;
 	}
-	for(int i=1;i<=n;i++)
-	{
+	for(int i=1;i<=n;i++){
 		if(x==94)
 			x=60;
 		else if(x==62)
@@ -92,8 +91,7 @@ int main(){
 	{
 		f2=1;
 	}
-	if(f1==1 && f2==1)
-	{
+	if(f1==1 && f2==1){
 		cout<<"undefined"<<endl;
 		return 0;
 	}

@@ -62,10 +62,14 @@ inline bool isEven(lli x){
 	else return true;
 }
 
+//a spanning tree is a subgraph of a graph which contains all the vertices of the graph and all its edges belong to the original graph
+//G
+
+
 int main(){
 	ios_base::sync_with_stdio(0);
 	lli t,n,a,b,c,d,e,f,x,y;
-	 
+	
 	bye;
 }
 

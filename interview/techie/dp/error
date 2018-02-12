@@ -1,0 +1,4 @@
+segf.cpp: In function 'int main()':
+segf.cpp:52:9: warning: division by zero [-Wdiv-by-zero]
+  cout<<2/0<<endl;
+        ~^~

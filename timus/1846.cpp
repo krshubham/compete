@@ -1,3 +1,6 @@
+#pragma comment (linker, "/stack:20000000")
+#pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,19 +13,17 @@ using namespace std;
 #define all(a) a.begin(),a.end()
 #define PI 3.1415926535897932384626433832795
 #define rep(i,n) for( int i = 0; i < n; i++ )
-#define rrep(i,n) for(int i = n - 1 ; i >= 0 ; i--)
-#define crep(i,a,b) for( int i = a; i <= b; i++ )
 #define endl '\n'
-#define fi first
-#define se second
 
 typedef long long int lli;
 typedef long long ll;
 typedef unsigned long long int ulli;
+typedef unsigned long long ull;
 typedef pair<lli,lli> plli;
 typedef vector<lli> vlli;
 typedef map<string,lli> mslli;
 typedef map<lli,lli> mlli;
+typedef unordered_map<lli,lli> umlli;
 typedef vector<pair<lli,lli> > vplli;
 
 inline bool isPrime(lli n){
@@ -47,36 +48,39 @@ inline bool isPrime(lli n){
 
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y,gc;
-	cin>>n;
+	lli t,n,a,b,c,d,e,f,x,y;
+	cin>>t;
 	char cc;
+	mlli m,without;
+	c = 1;
 	set<lli> s;
-	mlli m;
-	while(n--){
+	while(t--){
 		cin>>cc>>x;
 		if(cc == '+'){
 			s.insert(x);
 			m[x]++;
+			without[x] = c;
 			if(s.size() == 1){
-				gc = *s.begin();
+				c = *s.begin();
 			}
-			else{
-				gc = __gcd(gc,x);
+			else if(s.size() > 1){
+				c = __gcd(c,x);
 			}
 		}
-		else{
+		else if(cc == '-'){
 			m[x]--;
 			if(m[x] == 0){
-				set<lli>::iterator it = s.begin();
-				for (;it != s.end(); it++){
-					
-				}
+				s.erase(x);
+				c = without[x];
 			}
-			s.erase(x);
-
 		}
-		cout<<gc<<endl;
+		if(s.size() == 0){
+			c = 1;
+		}
+		else if(s.size() == 1){
+			c = *s.begin();
+		}
+		cout<<c<<endl;
 	}
 	bye;
 }
-
