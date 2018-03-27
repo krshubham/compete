@@ -1,6 +1,3 @@
 # Compete
 
-Trying....
-
-### Dynamic Programming
-Something which is most important
+Contains all of my submissions to various online judges

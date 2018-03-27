@@ -58,21 +58,21 @@ inline bool isPrime(lli n){
 
 const lli MAXN = 1e5+5;
 
-vlli graph[MAXN],visited[MAXN];
+vlli graph[MAXN];int visited[MAXN];
 //a simple Breadth First Search will be sufficent to solve this problem
-inline void bfs(lli node = 0){
+inline void bfs(lli node = 1){
 	queue<lli> Q;
 	Q.push(node);
 	while(!Q.empty()){
 		auto start = Q.front();
 		visited[start] = 1;
 		for (auto x: graph[start]){
-			if(x == start) continue;
-			else if(visited[x] == 1){
+			if(visited[x] == 1 && x != start){
 				cout<<"Graph has cycles"<<endl;
-				bye;
+				return;
 			}
 			else if(visited[x] == 0){
+				visited[x] = 1;
 				Q.push(x);
 			}
 		}
@@ -82,8 +82,14 @@ inline void bfs(lli node = 0){
 
 int main(){
 	ios_base::sync_with_stdio(0);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
+	lli t,n,a,b,c,d,e,f,x,y,m;
+	cin>>n>>m;
+	rep(i,m){
+		cin>>x>>y;
+		graph[x].pb(y);
+		graph[y].pb(x);
+	}
+	bfs();
 	bye;
 }
 
