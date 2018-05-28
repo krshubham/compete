@@ -1,6 +1,6 @@
-#pragma comment (linker, "/stack:20000000")
-#pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+// #pragma comment (linker, "/stack:20000000")
+// #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
+// #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include <bits/stdc++.h>
 using namespace std;
 #define bye return 0
@@ -30,23 +30,9 @@ inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
 
-unordered_map<lli,lli> dp;
-lli solve(lli x){
-    if(x <= 1){
-        return x;
-    }
-    if(dp[x] != 0){
-        return max(dp[x], x);
-    }
-    dp[x] = max(solve(x/2) + solve(x/3) + solve(x/4), x);
-    return dp[x];
-}
-
 int main(){
     ios_base::sync_with_stdio(0);
-    lli t,n,a,b,c,d,e,f,x,y;
-    while(cin>>x){
-        cout<<solve(x)<<endl;
-    }
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y,m,k,ans;
     bye;
 }
