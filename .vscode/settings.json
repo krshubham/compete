@@ -32,6 +32,7 @@
 		"valarray": "cpp",
 		"vector": "cpp",
 		"__functional_03": "cpp",
-		"functional": "cpp"
+		"functional": "cpp",
+		"limits": "cpp"
 	}
 }
