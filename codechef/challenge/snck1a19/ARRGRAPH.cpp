@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 09:43:25
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -33,40 +33,64 @@ inline vector<string> split(string str,string sep){char* cstr=const_cast<char*>(
 inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}if (n%2 == 0 || n%3 == 0) {return false;}for (int i=5; i*i<=n; i=i+6){if (n%i == 0 || n%(i+2) == 0){return false;}}return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
-const int MAXN = 1e5+5;
-
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
-}
-
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
-}
-
-void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
-}
-
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        vlli v(n);
+        rep(i,n){
+            cin>>v[i];
+        }
+        if(n == 1){
+            cout<<0<<endl;
+            cout<<v[0]<<endl;
+            continue;
+        }
+        int x = -1;
+        for(int i = 0; i < n; i++){
+            bool fl = false;
+            for(int j = 0; j < n; j++){
+                if(i != j){
+                    if(__gcd(v[i],v[j]) == 1){
+                        fl = true;
+                        break;
+                    }
+                }
+            }
+            if(!fl){
+                x = i;
+                break;
+            }
+        }
+        if(x == -1){
+            cout<<0<<endl;
+            rep(i,n){
+                cout<<v[i]<<" ";
+            }
+            cout<<endl;
+        }
+        else{
+            c = 0;
+            rep(i,n){
+                if(v[i] == 47){
+                    c++;
+                }
+            }
+            if(c == n){
+                v[x] = 43;
+            }
+            else{
+                v[x] = 47;
+            }
+            cout<<1<<endl;
+            rep(i,n){
+                cout<<v[i]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+    bye;
 }

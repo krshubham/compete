@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 23:02:33
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -34,39 +34,65 @@ inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
 const int MAXN = 1e5+5;
+int parent[MAXN];
+int size[MAXN];
+int val[MAXN];
+multiset<int> vals[MAXN];
 
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
+void make_set(int u){
+    parent[u] = u;
+    size[u] = 1;
+    vals[u].insert(val[v]);
 }
 
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
+void merge(int a, int b){
+    for(auto it:vals[b]){
+        vals[a].insert(it);
+    }
+    vals[b].clear();
+}
+
+int find_set(int u){
+    if(u == parent[u]){
+        return u;
+    }
+    parent[u] = find_set(parent[u]);
 }
 
 void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
+    int a = find_set(u);
+    int b = find_set(v);
+    if(a != b){
+        if(size[a] < size[b]){
+            swap(a,b);
+        }
+        parent[b] = a;
+        marge(a,b);
+        size[a] += size[b];
+        size[b] = 0;
+    }
 }
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y;
+    cin>>n;
+    vplli v(n+1);
+    rep(i,n-1){
+        cin>>x>>y;
+        v.pb(mp(x,y));
+    }
+    rep(i,n){
+        cin>>val[i];
+    }
+    vlli rem(n);
+    rep(i,n-1){
+        cin>>rem[i];
+    }
+    rep(i,n+2){
+        make_set(i);
+    }
+    int _max = 0;
+    bye;
 }

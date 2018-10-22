@@ -1,15 +1,11 @@
-#include <iostream>
-#include <cstdio>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <map>
-#include <cmath>
-#include <utility>
-#include <list>
-#include <iomanip>
-#include <stack>
-#include <climits>
+/**
+* @author: krshubham
+* @time: 19:21:24
+**/
+#pragma comment (linker, "/stack:20000000")
+#pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+#include <bits/stdc++.h>
 using namespace std;
 
 #define bye return 0
@@ -20,98 +16,41 @@ using namespace std;
 #define stp(a,b) a.push(b)
 #define all(a) a.begin(),a.end()
 #define PI 3.1415926535897932384626433832795
+#define rep(i,n) for( int i = 0; i < n; i++ )
+#define endl '\n'
 
 typedef long long int lli;
 typedef long long ll;
 typedef unsigned long long int ulli;
+typedef unsigned long long ull;
 typedef pair<lli,lli> plli;
 typedef vector<lli> vlli;
 typedef map<string,lli> mslli;
 typedef map<lli,lli> mlli;
+typedef unordered_map<lli,lli> umlli;
 typedef vector<pair<lli,lli> > vplli;
+inline vector<string> split(string str,string sep){char* cstr=const_cast<char*>(str.c_str());char* current;vector<string> arr;current=strtok(cstr,sep.c_str());while(current!=NULL){arr.push_back(current);current=strtok(NULL,sep.c_str());}return arr;}
+inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}if (n%2 == 0 || n%3 == 0) {return false;}for (int i=5; i*i<=n; i=i+6){if (n%i == 0 || n%(i+2) == 0){return false;}}return true;}
+inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
-template<typename T, typename U> inline void amin(T &x, U y) { if(y < x) x = y; }
-template<typename T, typename U> inline void amax(T &x, U y) { if(x < y) x = y; }
 
-inline bool isPrime(lli n){
-	if (n <= 1)  {
-		return false;
-	}
-	if (n <= 3)  {
-		return true;
-	}
-
-	if (n%2 == 0 || n%3 == 0) {
-		return false;
-	}
-	
-	for (int i=5; i*i<=n; i=i+6){
-		if (n%i == 0 || n%(i+2) == 0){
-			return false;
-		}
-	}
-
-	return true;
-}
-
-inline bool isEven(lli x){
-	if(x&1) return false;
-	else return true;
-}
-
-lli sum = 0,gsum = INT_MAX;
-lli t,n,a,b,c,d,e,f,x,y,m,k;
-vlli v,vp,ind,si;
 int main(){
 	ios_base::sync_with_stdio(0);
+	cin.tie(nullptr);
+	lli t,n,a,b,c,d,e,f,x,y,m,k;
 	cin>>n>>m>>k;
+	vlli shops(n);
 	c = 0;
 	d = 1;
-	lli start = 0;
-	for (int i = 0; i < n; ++i){
-		cin>>x;
-		if(x == 1) {
-			vp.pb(i - start);
-			c++;
-			ind.pb(i);
-			si.pb(i);
-			start = i;
-		}
-		v.pb(x);
+	rep(i,n){
+		cin>>shops[i];
+		c += (shops[i] == 1);
 	}
-	if(c < m) cout<<"-1"<<endl;
-	else if(c == m){
-		for (int i = 0; i < c; ++i){
-			if(i == 0){
-				sum += vp[i]*d;
-			}
-			else{
-				sum += k*vp[i]*d;
-				d++;
-			}
-		}
-		cout<<sum<<endl;
+	if(c < m){
+		cout<<-1<<endl;
 	}
-	else{
-		for (int i = 0; i <= c-m; ++i){
-			y = i;
-			e = 0;
-			sum = 0;			
-			while(e < m){
-				if(e == 0){
-					sum += si[y];
-					e++;
-				}
-				else if(e >= 1){
-					sum += vp[y]*e*k;
-					e++;
-				}
-				y++;
-			}
-			gsum = min(sum,gsum);
-		}
-		cout<<gsum<<endl;
+	if(c == m){
+		
 	}
 	bye;
 }
-

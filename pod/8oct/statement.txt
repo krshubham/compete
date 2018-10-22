@@ -1,0 +1,34 @@
+Number inversions
+
+Rahul is facing a unique problem, which he doesn't know how to solve. The problem asks him to build the smallest possible number
+by applying inversion on any digit of the number any number of times.
+Inversion of a digit is defined as that digit being replaced by (9-digit).
+
+The final output should not have any leading zeroes.
+
+Input Format:
+The only line of the input contains an integer N
+
+Output Format:
+Print only one single integer on a line as described above.
+
+Constraints:
+1 <= N <= 10^18​​​​​​​
+
+Examples:
+Input:
+87
+Output:
+12
+
+Explanation:
+12 is the smallest possible number.
+
+Example:
+Input:
+99
+Output:
+90
+
+Explanation:
+We cannot have leading zeroes hence 90 is the answer in this case.

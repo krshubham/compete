@@ -36,6 +36,13 @@
 		"limits": "cpp",
 		"filesystem": "cpp",
 		"__config": "cpp",
-		"__nullptr": "cpp"
-	}
+		"__nullptr": "cpp",
+		"__locale": "cpp",
+		"tuple": "cpp",
+		"queue": "cpp",
+		"stack": "cpp",
+		"ratio": "cpp"
+	},
+	"python.linting.pylintEnabled": false,
+	"python.pythonPath": "/usr/local/opt/python/bin/python3.7"
 }

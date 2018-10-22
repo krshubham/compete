@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 22:47:51
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -35,38 +35,42 @@ inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x
 
 const int MAXN = 1e5+5;
 
-int parent[MAXN],size[MAXN];
+vlli graph[MAXN];
 
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
-}
-
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
-}
-
-void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
-}
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y,m;
+    cin>>n>>m;
+    for(int i = 0; i < m; i++){
+        cin>>x>>y;
+        graph[x].pb(y);
+        graph[y].pb(x);
+    }
+    bool visited[MAXN];
+    int level[MAXN];
+    fill(visited,visited+MAXN,false);
+    fill(level,level+MAXN,-1);
+    level[1] = 0;
+    queue<int> Q;
+    Q.push(1);
+    while(!Q.empty()){
+        auto x = Q.front();
+        Q.pop();
+        visited[x] = true;
+        for(auto child:graph[x]){
+            if(!visited[child]){
+                visited[child] = true;
+                level[child] = level[x]+1;
+                Q.push(child);
+            }
+            else if(level[child] == level[x]){
+                cout<<"the graph is not bi partite"<<endl;
+                bye;
+            }
+        }
+    }
+    cout<<"The graph is bipartite"<<endl;
+    bye;
 }

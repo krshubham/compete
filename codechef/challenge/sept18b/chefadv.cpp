@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 16:38:29
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -33,40 +33,57 @@ inline vector<string> split(string str,string sep){char* cstr=const_cast<char*>(
 inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}if (n%2 == 0 || n%3 == 0) {return false;}for (int i=5; i*i<=n; i=i+6){if (n%i == 0 || n%(i+2) == 0){return false;}}return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
-const int MAXN = 1e5+5;
+string ans = "Chefirnemo";
+string nans = "Pofik";
 
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
-}
-
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
-}
-
-void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
+inline bool check(lli n, lli m, lli x, lli y){
+    if(x > n || y > m){
+        return false;
+    }
+    if((n%x) == 0){
+        if(m%y == 0){
+            return true;
+        }
+        else if(m%y == 1 && x == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else if((m%y) == 0){
+        if(n%x == 0){
+            return true;
+        }
+        else if(n%x == 1 && y == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else {
+        n--,m--;
+        n %= x;
+        m %= y;
+        if((n == 1 && m == 1) || (n == 0 && m == 0)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y,m;
+    cin>>t;
+    
+    while(t--){
+        cin>>n>>m>>x>>y;
+        if(check(n,m,x,y))
+    }
+    bye;
 }

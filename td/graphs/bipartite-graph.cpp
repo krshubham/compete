@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 22:35:42
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -34,39 +34,45 @@ inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
 const int MAXN = 1e5+5;
-
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
+vlli graph[MAXN];
+bool visited[MAXN];
+int color[MAXN];
+bool dfs(int source){
+    visited[source] = true;
+    for(auto child:graph[source]){
+        if(!visited[child]){
+            visited[child] = true;
+            color[child] = 1-color[source];
+            if(!dfs(child)){
+                return false;
+            }
+        }
+        else if(color[child] == color[source]){
+            return false;
+        }
+    }
+    return true;
 }
 
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
-}
-
-void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
-}
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y,m;
+    cin>>n>>m;//nodes and edges
+    fill(visited,visited+MAXN,false);
+    fill(color,color+MAXN,-1);
+    rep(i,m){
+        cin>>x>>y;
+        graph[x].pb(y);
+        graph[y].pb(x);
+    }
+    color[1] = 1;
+    if(dfs(1)){
+        cout<<"The graph is bipartite"<<endl;
+    }
+    else{
+        cout<<"The graph is not bipartite"<<endl;
+    }
+    bye;
 }

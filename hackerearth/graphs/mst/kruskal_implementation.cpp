@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 15:37:18
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -33,40 +33,65 @@ inline vector<string> split(string str,string sep){char* cstr=const_cast<char*>(
 inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}if (n%2 == 0 || n%3 == 0) {return false;}for (int i=5; i*i<=n; i=i+6){if (n%i == 0 || n%(i+2) == 0){return false;}}return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
-const int MAXN = 1e5+5;
+const lli MAXN = 1e5+5;
+lli parent[MAXN];
+lli size[MAXN];
 
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
+void make_set(int u){
+    parent[u] = u;
+    size[u] = 1;
 }
 
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
+void find_set(int u){
+    if(u == parent[u]){
+        return u;
+    }
+    parent[u] = find_set(parent[u]);
 }
 
 void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
+    int a = find_set(u);
+    int b = find_set(v);
+    if(a != b){
+        if(size[a] < size[b]){
+            swap(a,b);
+        }
+        parent[b] = a;
+        size[a] += size[b];
+        size[b] = 0;
+    }
+}
+
+void init(){
+    for(int i = 1; i < 100000; i++){
+        make_set(i);
+    }
+}
+
+lli kruskal(pair<int,pair<int,int>>& graph[], int e, int n){
+    lli _ans = 0;
+    for(int i = 0; i < e; i++){
+        int x = graph[i].second.first;
+        int y = graph[i].second.second;
+        if(find_set(x) != find_set(y)){
+            _ans += graph[i].first;
+            union_sets(x,y);
+        }
+    }
+    return _ans;
 }
 
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f,x,y,w;
+    cin>>n>>e;
+    pair<int,pair<int,int>> graph[MAXN];
+    for(int i = 0; i < e; i++){
+        cin>>x>>y>>w;
+        graph[i] = mp(w,mp(x,y));
+    }
+    sort(graph,graph+e);
+    cout<<kruskal(graph,e,n)<<endl;
+    bye;
 }

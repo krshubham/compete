@@ -1,6 +1,6 @@
 /**
 * @author: krshubham
-* @time: 15:58:17
+* @time: 21:08:45
 **/
 #pragma comment (linker, "/stack:20000000")
 #pragma GCC optimize("Ofast,unroll-loops,no-stack-protector")
@@ -33,40 +33,58 @@ inline vector<string> split(string str,string sep){char* cstr=const_cast<char*>(
 inline bool isPrime(lli n){if (n <= 1){return false;}if (n <= 3)  {return true;}if (n%2 == 0 || n%3 == 0) {return false;}for (int i=5; i*i<=n; i=i+6){if (n%i == 0 || n%(i+2) == 0){return false;}}return true;}
 inline lli power(lli x,lli y,lli p){int res=1;x=x%p;while(y>0){if(y&1)res=(res*x)%p;y = y>>1;x = (x*x) % p;}return res;}
 
-const int MAXN = 1e5+5;
-
-int parent[MAXN],size[MAXN];
-
-void make_set(int v){
-	parent[v] = v;
-	size[v] = 1;
-}
-
-int find_set(int v){
-	if(v == parent[v]){
-		return v;
-	}
-	// Unwinding the tree while the recursion gets over
-	return parent[v] = find_set(parent[v]);
-	return v;
-}
-
-void union_sets(int u, int v){
-	int x = find_set(u);
-	int y = find_set(v);
-	if(x != y){
-		if(size[x] < size[b]){
-			swap(x,y);
-		}
-		parent[y] = x;
-		size[x] += size[y];
-	}
-}
-
 int main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(nullptr);
-	lli t,n,a,b,c,d,e,f,x,y;
-	
-	bye;
+    ios_base::sync_with_stdio(0);
+    cin.tie(nullptr);
+    lli t,n,a,b,c,d,e,f;
+    long double x,y;
+    cin>>t;
+    string s;
+    while(t--){
+        unordered_map<string,lli> um;
+        cin>>n;
+        x = 0;
+        while(n--){
+            bool left = false,right = false;
+            cin>>s;
+            y = 0;
+            if(um.find(s) != um.end()){
+                x += (um[s]/2.0);
+                continue;
+            }
+            if(s[0] == 'd' || s[0] == 'f'){
+                left = true;
+            }
+            else {
+                right = true;
+            }
+            y += 2;
+            for(int i = 1; i <s.size(); i++){
+                if(s[i] == 'f' || s[i] == 'd'){
+                    if(right){
+                        y += 2;
+                    }
+                    else{
+                        y += 4;
+                    }
+                    left = true;
+                    right = false;
+                }
+                else{
+                    if(left){
+                        y += 2;
+                    }
+                    else{
+                        y += 4;
+                    }
+                    left = false;
+                    right = true;
+                }
+            }
+            um[s] = y;
+            x += y;
+        }
+        cout<<x<<endl;
+    }
+    bye;
 }

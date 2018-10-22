@@ -6,7 +6,6 @@
                 "/usr/local/include/c++/7.1.0",
                 "/usr/local/bits",
                 "/usr/local/include/",
-                "${workspaceRoot}",
                 "/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/x86_64-apple-darwin16.5.0",
                 "/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/tr1",
                 "/usr/local/Cellar/gcc/8.1.0/include/c++/8.1.0/x86_64-apple-darwin17.5.0/i386",
@@ -19,8 +18,7 @@
                 "path": [
                     "/usr/local/include/c++/7.1.0",
                     "/usr/include",
-                    "/usr/local/include",
-                    "${workspaceRoot}"
+                    "/usr/local/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
@@ -42,8 +40,7 @@
             "browse": {
                 "path": [
                     "/usr/include",
-                    "/usr/local/include",
-                    "${workspaceRoot}"
+                    "/usr/local/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
