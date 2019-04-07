@@ -1,0 +1,10 @@
+By definition, the numbers which comprise of only digits 4 and 7 are considered as Freven numbers. We define a number as almost Freven which is divisble by any
+Freven number. Given a number N, you have to determine if the given number is almost Freven number.
+
+Input Format:
+Input contains one single line denoting the number number
+Output Format:
+Print "YES" if the number is an almost freven number otherwise, print "NO" (without quotes).
+
+Constraints:
+1 <= N <= 1000
